@@ -40,5 +40,5 @@ resource "google_compute_instance" "sonarqube" {
     name = "splunk"
   }
 
-  metadata_startup_script = "sudo apt-get update -y;sudo apt-get install git -y; sudo git clone https://github.com/Diksha86/splunk.git; cd /splunk; sudo chmod 777 /splunk/*; sudo sh splunk.sh"
+  metadata_startup_script = "sudo apt-get update -y;sudo apt-get install git -y; sudo git clone https://github.com/Diksha86/splunk.git; cd splunk; sudo chmod 777 /splunk/*; sudo sh splunk.sh"
 }
