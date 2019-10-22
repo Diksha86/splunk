@@ -13,14 +13,14 @@ resource "google_compute_address" "sonarqubeip" {
 
 resource "google_compute_instance" "sonarqube" {
   name         = "${var.instance_name}"
-  machine_type = "n1-standard-1"
+  machine_type = "n1-standard-2"
   zone         = "us-east1-b"
 
   tags = ["name", "splunk", "http-server"]
 
   boot_disk {
     initialize_params {
-      image = "centos-7-v20180129"
+      image = "debian-cloud/debian-9"
     }
   }
 
@@ -40,5 +40,5 @@ resource "google_compute_instance" "sonarqube" {
     name = "splunk"
   }
 
-  metadata_startup_script = "sudo yum update -y;sudo yum install git -y; sudo git clone https://github.com/Diksha86/splunk.git; cd /splunk; sudo chmod 777 /splunk/*; sudo sh splunk.sh"
+  metadata_startup_script = "sudo apt-get update -y;sudo apt-get install git -y; sudo git clone https://github.com/Diksha86/splunk.git; cd /splunk; sudo chmod 777 /splunk/*; sudo sh splunk.sh"
 }
