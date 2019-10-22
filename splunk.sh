@@ -3,3 +3,4 @@ sudo wget -O splunk-7.1.0-2e75b3406c5b-linux-2.6-amd64.deb 'https://www.splunk.c
 sudo dpkg -i splunk-7.1.0-2e75b3406c5b-linux-2.6-amd64.deb
 sudo cd /opt/splunk/bin
 sudo ./splunk enable boot-start --accept-license
+sudo ./splunk start
