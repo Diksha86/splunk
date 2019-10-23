@@ -4,14 +4,14 @@ provider "google" {
   region      = "${var.region}"
 }
 
-//SonarQube Instance
+
 resource "google_compute_address" "sonarqubeip" {
-  name   = "${var.sonarqube_instance_ip_name}"
-  region = "${var.sonarqube_instance_ip_region}"
+  name   = "${var.splunk_instance_ip_name}"
+  region = "${var.splunk_instance_ip_region}"
 }
 
 
-resource "google_compute_instance" "sonarqube" {
+resource "google_compute_instance" "splunk" {
   name         = "${var.instance_name}"
   machine_type = "n1-standard-2"
   zone         = "us-east1-b"
@@ -29,11 +29,11 @@ resource "google_compute_instance" "sonarqube" {
   #}
 
   network_interface {
-    network    = "${var.sonarvpc}"
-    subnetwork = "${var.sonarsub}"
+    network    = "${var.splunkvpc}"
+    subnetwork = "${var.splunksub}"
     access_config {
       // Ephemeral IP
-      nat_ip = "${google_compute_address.sonarqubeip.address}"
+      nat_ip = "${google_compute_address.splunkip.address}"
     }
   }
   metadata = {
